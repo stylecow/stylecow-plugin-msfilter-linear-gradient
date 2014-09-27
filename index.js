@@ -1,13 +1,16 @@
 var color = require('stylecow-color');
 
-module.exports = {
-	disable: {
-		explorer: 9.0
-	},
-	Declaration: {
-		background: fixer,
-		"background-image": fixer
-	}
+module.exports = function (stylecow) {
+
+	stylecow.addTask({
+		disable: {
+			explorer: 9.0
+		},
+		Declaration: {
+			background: fixer,
+			"background-image": fixer
+		}
+	});
 };
 
 function fixer (declaration) {
