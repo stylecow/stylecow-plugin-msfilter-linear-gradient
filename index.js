@@ -14,13 +14,13 @@ module.exports = function (stylecow) {
 };
 
 function fixer (declaration) {
-	var fn = declaration.search('Function', 'linear-gradient');
+	var fn = declaration.search({type: 'Function', name: 'linear-gradient'});
 
 	if (fn.length === 1) {
-		var filter = getFilter(fn[0].content);
+		var filter = getFilter(fn[0].getValue());
 
 		if (filter) {
-			declaration.ancestor('Rule').addOldMsFilter(filter);
+			declaration.ancestor({type: 'Rule'}).addOldMsFilter(filter);
 		}
 	}
 }
