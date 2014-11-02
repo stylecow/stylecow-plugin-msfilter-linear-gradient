@@ -17,10 +17,10 @@ function fixer (declaration) {
 	var fn = declaration.search({type: 'Function', name: 'linear-gradient'});
 
 	if (fn.length === 1) {
-		var filter = getFilter(fn[0].getValue());
+		var filter = getFilter(fn[0].getContent());
 
 		if (filter) {
-			declaration.ancestor({type: 'Rule'}).addOldMsFilter(filter);
+			declaration.parent({type: 'Rule'}).addOldMsFilter(filter);
 		}
 	}
 }
