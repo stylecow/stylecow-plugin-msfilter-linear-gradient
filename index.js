@@ -11,36 +11,39 @@ module.exports = function (stylecow) {
 			"background-image": fixer
 		}
 	});
-};
 
-function fixer (declaration) {
-	var fn = declaration.search({type: 'Function', name: 'linear-gradient'});
+	function fixer (declaration) {
+		var fn = declaration.searchFirst({type: 'Function', name: 'linear-gradient'});
 
-	if (fn.length === 1) {
-		var filter = getFilter(fn[0].getContent());
+		if (fn) {
+			var filter = getFilter(fn.toArray());
 
-		if (filter) {
-			declaration.parent({type: 'Rule'}).addOldMsFilter(filter);
+			if (filter) {
+				stylecow.utils.addMsFilter(declaration.parent({type: 'Block'}), filter);
+			}
 		}
 	}
-}
+};
 
 function getFilter (params) {
 	var direction, reverse;
 
 	switch (params.shift()) {
+		case 'top':
 		case 'to bottom':
 		case '90deg':
 			direction = 'vertical';
 			reverse = false;
 			break;
 
+		case 'bottom':
 		case 'to top':
 		case '-90deg':
 			direction = 'vertical';
 			reverse = true;
 			break;
 
+		case 'left':
 		case 'to right':
 		case '180deg':
 		case '-180deg':
@@ -48,6 +51,7 @@ function getFilter (params) {
 			reverse = false;
 			break;
 
+		case 'right':
 		case 'to left':
 		case '0deg':
 		case '360deg':
