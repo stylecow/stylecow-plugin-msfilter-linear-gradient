@@ -3,26 +3,25 @@ var color = require('stylecow-color');
 module.exports = function (stylecow) {
 
 	stylecow.addTask({
-		disable: {
+		forBrowsersLowerThan: {
 			explorer: 9.0
 		},
-		Declaration: {
-			background: fixer,
-			"background-image": fixer
-		}
-	});
+		filter: {
+			type: 'Declaration',
+			name: ['background', 'background-image']
+		},
+		fn: function (declaration) {
+			var fn = declaration.searchFirst({type: 'Function', name: 'linear-gradient'});
 
-	function fixer (declaration) {
-		var fn = declaration.searchFirst({type: 'Function', name: 'linear-gradient'});
+			if (fn) {
+				var filter = getFilter(fn.toArray());
 
-		if (fn) {
-			var filter = getFilter(fn.toArray());
-
-			if (filter) {
-				stylecow.utils.addMsFilter(declaration.parent({type: 'Block'}), filter);
+				if (filter) {
+					stylecow.utils.addMsFilter(declaration.parent({type: 'Block'}), filter);
+				}
 			}
 		}
-	}
+	});
 };
 
 function getFilter (params) {
