@@ -17,7 +17,7 @@ module.exports = function (stylecow) {
 				var filter = getFilter(fn.toArray());
 
 				if (filter) {
-					stylecow.utils.addMsFilter(declaration.parent({type: 'Block'}), filter);
+					stylecow.utils.addMsFilter(declaration.parent('Block'), filter);
 				}
 			}
 		}
