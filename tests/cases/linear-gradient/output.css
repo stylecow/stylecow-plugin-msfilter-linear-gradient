@@ -1,0 +1,7 @@
+div {
+	background: linear-gradient(to bottom, red, blue);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000,endColorStr=#0000FF)";
+}
+div {
+	background: linear-gradient(to bottom, red, blue, green);
+}

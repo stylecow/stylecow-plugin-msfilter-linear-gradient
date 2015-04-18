@@ -13,5 +13,11 @@
 	"dependencies": {
 		"stylecow-color": "2.*"
 	},
+	"devDependencies": {
+		"stylecow-parser": "2.*"
+	},
+	"scripts": {
+		"test": "mocha tests/cases.js"
+	},
 	"license": "MIT"
 }

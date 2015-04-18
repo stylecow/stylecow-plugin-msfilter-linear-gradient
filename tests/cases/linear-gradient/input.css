@@ -1,0 +1,6 @@
+div {
+	background: linear-gradient(to bottom, red, blue);
+}
+div {
+	background: linear-gradient(to bottom, red, blue, green);
+}

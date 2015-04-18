@@ -11,13 +11,16 @@ module.exports = function (stylecow) {
 			name: ['background', 'background-image']
 		},
 		fn: function (declaration) {
-			var fn = declaration.searchFirst({type: 'Function', name: 'linear-gradient'});
+			var fn = declaration.get({
+				type: 'Function',
+				name: 'linear-gradient'
+			});
 
 			if (fn) {
 				var filter = getFilter(fn.toArray());
 
 				if (filter) {
-					stylecow.utils.addMsFilter(declaration.parent('Block'), filter);
+					stylecow.utils.addMsFilter(declaration.getParent('Block'), filter);
 				}
 			}
 		}
