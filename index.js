@@ -1,4 +1,4 @@
-var color = require('stylecow-color');
+var Color = require('color');
 
 module.exports = function (stylecow) {
 
@@ -66,17 +66,17 @@ function getFilter (params) {
 	}
 
 	if (direction && params.length === 2) {
-		params[0] = color.RGBA_HEX(color.toRGBA(params[0]));
-		params[1] = color.RGBA_HEX(color.toRGBA(params[1]));
+		params[0] = Color(params[0].toString()).hexString();
+		params[1] = Color(params[1].toString()).hexString();
 
 		if (reverse) {
 			params.reverse();
 		}
 
 		if (direction === 'horizontal') {
-			return 'progid:DXImageTransform.Microsoft.gradient(startColorStr="#' + params[0] + '", endColorStr="#' + params[1] + '", GradientType=1)';
+			return 'progid:DXImageTransform.Microsoft.gradient(startColorStr="' + params[0] + '", endColorStr="' + params[1] + '", GradientType=1)';
 		}
 
-		return 'progid:DXImageTransform.Microsoft.gradient(startColorStr="#' + params[0] + '", endColorStr="#' + params[1] + '")';
+		return 'progid:DXImageTransform.Microsoft.gradient(startColorStr="' + params[0] + '", endColorStr="' + params[1] + '")';
 	}
 }
