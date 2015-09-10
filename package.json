@@ -1,7 +1,10 @@
 {
   "name": "stylecow-plugin-msfilter-linear-gradient",
   "description": "Stylecow plugin to emulate the linear-gradient background in explorer < 9 using ms filters.",
-  "version": "4.1.0",
+  "version": "5.0.0",
+  "engines": {
+    "node": ">=4.0"
+  },
   "author": "Oscar Otero <oom@oscarotero.com>",
   "homepage": "https://github.com/stylecow/stylecow-plugin-msfilter-linear-gradient",
   "bugs": "https://github.com/stylecow/stylecow-plugin-msfilter-linear-gradient/issues",
@@ -15,7 +18,7 @@
   },
   "devDependencies": {
     "mocha": "^2.2.5",
-    "stylecow-core": "^1.0.1"
+    "stylecow-core": "^2.0.0"
   },
   "scripts": {
     "test": "mocha tests/cases.js"
